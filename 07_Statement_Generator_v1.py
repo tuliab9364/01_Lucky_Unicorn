@@ -1,9 +1,9 @@
-greeting = "hello world"
-sides = "*" * 3
+def statement_generator(statement, decoration):
 
-greeting = " {} {} {}".format(sides, greeting, sides)
+    sides = decoration * 3
 
-top_bottom = "*" * len (greeting)
+    statement = "{} {} {}".format(sides, statement, sides)
+    top_bottom = "*" * len (greeting)
 
 print(top_bottom)
 print(greeting)
