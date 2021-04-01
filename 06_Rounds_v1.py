@@ -21,12 +21,14 @@ while play_again == "":
     # user gets a unicorn (add $4 to balance)
     if 1 <= chosen_num <= 5:
         chosen = "unicorn"
+        decoration = "!"
         balance += 4
 
     # if the random # is between 6 and 36
     # user gets donkey (subtract $1 from the balance)
     elif 6 <= chosen_num <= 36:
         chosen = "donkey"
+        prize_decoration = "D"
         balance -= 1
 
     # The token is either a horse or zebra...
@@ -36,23 +38,29 @@ while play_again == "":
           # item to a horse
           if chosen_num % 2 == 0:
             chosen = "horse"
+            prize_decoration = "H"
+          
 
                 # otherwise set it to a zebra
           else:
                 chosen = "zebra"
-          
-          # take 50c of balance for horse OR zebra      
+                prize_decoration = "z"
+        
           balance -= 0.5
 
 
-    print("You got a {}, you have ${:.2f} left".format(chosen, balance))
+    outcome = "You got a {}, you have ${:.2f} left".format(chosen, balance)
+    
+    statement_generator(outcome, prize_decoration)
+
     print()
 
     if balance < 1:
         play_again = "xxx"
         print("sorry you have run out of money")
-    else:
+    
+   else:
         play_again = input("Press Enter to play again or 'xxx' to quit")
-
+        
 print()
 print("Final balance", balance)

@@ -3,13 +3,12 @@ def statement_generator(statement, decoration):
     sides = decoration * 3
 
     statement = "{} {} {}".format(sides, statement, sides)
-    top_bottom = "*" * len (greeting)
+    
+    print (top_bottom)
+    print (greeting)
+    print (top_bottom)
 
-print(top_bottom)
-print(greeting)
-print(top_bottom)
-
-return ""
+    return ""
 
 # Main routine goes here
 statement_generator("Welcome to the Lucky Unicorn Game", "*")

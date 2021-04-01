@@ -49,13 +49,18 @@ def statement_generator(statement, decoration):
     sides = decoration * 3
 
     statement = "{} {} {}".format(sides, statement, sides)
-    top_bottom = "*" * len (greeting)
+    top_bottom = decoration * len(statement)
 
-print(top_bottom)
-print(greeting)
-print(top_bottom)
+    print(top_bottom)
+    print(statement)
+    print(top_bottom)
 
+    return ""
 
+# Main routine goes here
+statement_generator("Welcome to the Lucky Unicorn Game", "*")
+print()
+statement_generator("Congratulation you got a Unicorn", "!")
 # Main Routine goes here...
 played_before = yes_no("Have you played the game before? ")
 
@@ -88,12 +93,14 @@ while play_again == "":
     # user gets a unicorn (add $4 to balance)
     if 1 <= chosen_num <= 5:
         chosen = "unicorn"
+        decoration = "!"
         balance += 4
 
     # if the random # is between 6 and 36
     # user gets donkey (subtract $1 from the balance)
     elif 6 <= chosen_num <= 36:
         chosen = "donkey"
+        prize_decoration = "D"
         balance -= 1
 
     # The token is either a horse or zebra...
@@ -103,16 +110,20 @@ while play_again == "":
           # item to a horse
           if chosen_num % 2 == 0:
             chosen = "horse"
+            prize_decoration = "H"
 
                 # otherwise set it to a zebra
           else:
                 chosen = "zebra"
-          
+                prize_decoration = "z"
           # take 50c of balance for horse OR zebra      
           balance -= 0.5
 
 
-    print("You got a {}, you have ${:.2f} left".format(chosen, balance))
+    outcome = "You got a {}, you have ${:.2f} left".format(chosen, balance)
+
+    statement_generator(outcome, prize_decoration)
+
     print()
 
     if balance < 1:
